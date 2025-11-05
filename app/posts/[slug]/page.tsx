@@ -39,6 +39,8 @@ const options = {
   },
 };
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: any) {
   const { slug } = await params;
   const { posts }: { posts: Post[] } = await getPosts();
@@ -74,8 +76,6 @@ export default async function PostDetailsPage({ params }: any) {
   }
 
   const { content, metadata } = post;
-
-  console.log(content, "content");
 
   return (
     <div

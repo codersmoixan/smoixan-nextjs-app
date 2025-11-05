@@ -12,6 +12,8 @@ export async function getPosts(): Promise<{
   let filenames = await fs.promises.readdir(postsDirectory);
   filenames = filenames.reverse();
 
+  console.log(postsDirectory, "postsDirectory");
+
   const posts = await Promise.all(
     filenames.map(async (filename) => {
       const fullPath = path.join(postsDirectory, filename);

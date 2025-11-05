@@ -3,6 +3,8 @@ import { Grid } from "@/components/ui/grid";
 import { getPosts } from "@/lib/post";
 import { type Post as PostSlug } from "@/types/post";
 
+export const revalidate = 60;
+
 export default async function Posts() {
   const { posts }: { posts: PostSlug[] } = await getPosts();
 
