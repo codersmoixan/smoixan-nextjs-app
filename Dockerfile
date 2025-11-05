@@ -47,7 +47,7 @@ ENV PORT=3000
 
 # 创建并使用非 root 用户运行容器
 RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs
+  adduser --system --uid 1001 nextjs
 
 # 将构建好的文件复制到生产镜像
 COPY --from=builder /app/public ./public

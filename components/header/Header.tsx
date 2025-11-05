@@ -2,26 +2,25 @@ import DocSearch from "@/components/DocSearch";
 import { docSearchConfig } from "@/components/DocSearch/docSearch";
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { siteConfig } from "@/config/site";
-import { WeeklyPost } from "@/types/post";
-import Image from "next/image";
 import Link from "next/link";
 
-const Header = ({ posts }: { posts: WeeklyPost[] }) => {
+function Header() {
   return (
-    <header className="mx-auto max-w-5xl px-4 py-3 border-b border-gray-600 sticky top-0 bg-background z-50">
+    <header className="mx-auto max-w-[1280px] px-4 py-3 sticky top-0 z-50 backdrop-blur-sm">
       <nav className="relative z-50 flex justify-between">
         <div className="flex items-center md:gap-x-12">
           <Link href="/" className="flex items-center space-x-1 font-bold">
-            <Image
-              alt={siteConfig.name}
-              src="/logo.svg"
-              className="w-8 h-8"
-              width={24}
-              height={24}
-            />
-            <span className="text-gray-100 hidden sm:block">开源周刊</span>
+            <h1 className="mt-0 mb-0">
+              <span>zj</span>
+            </h1>
           </Link>
-          <div className="hidden md:flex md:gap-x-6"></div>
+          <div className="hidden md:flex md:gap-x-6">
+            {siteConfig.headerProducts.map((product) => (
+              <Link key={product.name} href={product.url}>
+                {product.name}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="flex items-center">
@@ -34,6 +33,6 @@ const Header = ({ posts }: { posts: WeeklyPost[] }) => {
       </nav>
     </header>
   );
-};
+}
 
 export default Header;

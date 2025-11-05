@@ -1,6 +1,8 @@
-import { Aside } from "@/components/mdx/Aside";
-import { Callout } from "@/components/mdx/Callout";
-import { MdxCard } from "@/components/mdx/MdxCard";
+import { Aside } from "@/components/mdx/components/Aside";
+import Blockquote from "@/components/mdx/components/Blockquote";
+import { Callout } from "@/components/mdx/components/Callout";
+import { MdxCard } from "@/components/mdx/components/MdxCard";
+import PreWrapper from "@/components/mdx/components/PreWrapper";
 import React, { type JSX, type ReactNode } from "react";
 
 interface HeadingProps {
@@ -31,7 +33,7 @@ const MDXComponents: MDXComponentsProps = {
   h2: (props) => (
     <Heading
       level={2}
-      className="text-3xl font-semibold mt-6 mb-4 border-b-2 border-gray-200 pb-2"
+      className="text-3xl font-semibold mt-6 mb-4 pb-2 border-none"
       {...props}
     />
   ),
@@ -56,7 +58,7 @@ const MDXComponents: MDXComponentsProps = {
     />
   ),
   hr: (props) => <hr className="border-t border-gray-600" {...props} />,
-  p: (props) => <p className="mt-4 mb-4" {...props} />,
+  p: (props) => <p className="my-5 text-sm text-gray-800" {...props} />,
   a: (props) => (
     <a
       className="link-underline"
@@ -69,20 +71,10 @@ const MDXComponents: MDXComponentsProps = {
   ol: (props) => <ol className="list-decimal pl-5 mt-0 mb-4" {...props} />,
   li: (props) => <li className="mb-2" {...props} />,
   code: (props) => (
-    <code
-      className="rounded bg-[transparent] py-[0.2rem] font-mono"
-      {...props}
-    />
+    <code className="text-sm p-4 rounded-md border-gray-100" {...props} />
   ),
-  pre: (props) => (
-    <pre className="rounded bg-[transparent] py-4 overflow-x-auto my-2" {...props} />
-  ),
-  blockquote: (props) => (
-    <blockquote
-      className="pl-4 border-l-4 border-gray-200 my-4 text-gray-300 italic"
-      {...props}
-    />
-  ),
+  pre: PreWrapper,
+  blockquote: Blockquote,
   img: (props) => (
     <img width="70%" className="rounded border-4 border-main" {...props} />
   ),

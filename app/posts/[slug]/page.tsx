@@ -32,7 +32,7 @@ const options = {
             block: "typescript",
             inline: "javascript",
           },
-          theme: 'github-light'
+          theme: "github-light",
         },
       ],
     ],
@@ -75,8 +75,13 @@ export default async function PostDetailsPage({ params }: any) {
 
   const { content, metadata } = post;
 
+  console.log(content, "content");
+
   return (
-    <div className="flex flex-row w-full pt-0 max-w-[1480px]">
+    <div
+      className="flex flex-row w-full pt-0 max-w-[1280px]"
+      style={{ fontFamily: "var(--post-font)" }}
+    >
       <div className="w-full md:w-4/5 px-6">
         <article id={`article`}>
           <h1>{metadata.title}</h1>

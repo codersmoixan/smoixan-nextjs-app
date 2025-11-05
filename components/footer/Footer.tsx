@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="mt-16 space-y-2 pt-6 pb-4 flex flex-col items-center text-sm text-gray-400 border-t border-gray-600">
+      <div className="mt-16 space-y-2 pt-6 pb-4 flex flex-col items-center text-sm text-gray-400">
         <FooterLinks />
         <FooterProducts />
         <div className="flex space-x-2">
