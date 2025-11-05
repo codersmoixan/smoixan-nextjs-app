@@ -17,7 +17,7 @@ export default function PreWrapper({ children, ...props }: CodeProps) {
     <pre className="my-8 p-1 border border-gray-100 rounded-md bg-gray-50">
       <div className="p-2 flex items-center justify-between">
         {icons[props["data-language"]] ?? null}
-        <CopyButton />
+        <CopyButton content="" />
       </div>
       {children}
     </pre>

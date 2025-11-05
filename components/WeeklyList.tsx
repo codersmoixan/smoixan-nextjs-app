@@ -1,4 +1,4 @@
-import { WeeklyPost } from "@/types/post";
+import { Post } from "@/types/post";
 import dayjs from "dayjs";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ export default async function WeeklyList({
   posts,
 }: {
   isSide?: boolean;
-  posts: WeeklyPost[];
+  posts: Post[];
 }) {
   return (
     <ul className="flex flex-col gap-4">

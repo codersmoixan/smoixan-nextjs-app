@@ -3,14 +3,14 @@ import { Input } from "@/components/ui/input";
 import { createIndex } from "@/lib/loadIndex";
 import { doSearch } from "@/lib/search";
 import { cn } from "@/lib/utils";
+import { Post } from "@/types/post";
 import { SearchResult } from "@/types/search";
-import { WeeklyPost } from "@/types/post";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { HighlightMatches } from "./HighlightMatches";
 
-const SearchBar = ({ posts }: { posts: WeeklyPost[] }) => {
+const SearchBar = ({ posts }: { posts: Post[] }) => {
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [show, setShow] = useState(false);
