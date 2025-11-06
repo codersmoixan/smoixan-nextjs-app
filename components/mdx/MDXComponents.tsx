@@ -1,6 +1,7 @@
 import { Aside } from "@/components/mdx/components/Aside";
 import Blockquote from "@/components/mdx/components/Blockquote";
 import { Callout } from "@/components/mdx/components/Callout";
+import Code from "@/components/mdx/components/Code";
 import { MdxCard } from "@/components/mdx/components/MdxCard";
 import PreWrapper from "@/components/mdx/components/PreWrapper";
 import React, { type JSX, type ReactNode } from "react";
@@ -58,10 +59,12 @@ const MDXComponents: MDXComponentsProps = {
     />
   ),
   hr: (props) => <hr className="border-t border-gray-600" {...props} />,
-  p: (props) => <p className="my-5 text-sm text-gray-800" {...props} />,
+  p: (props) => (
+    <p className="my-5 text-sm text-gray-800 leading-8" {...props} />
+  ),
   a: (props) => (
     <a
-      className="link-underline"
+      className="link-underline !text-blue-500 hover:!text-blue-600"
       target="_blank"
       rel="noopener noreferrer nofollow"
       {...props}
@@ -69,10 +72,8 @@ const MDXComponents: MDXComponentsProps = {
   ),
   ul: (props) => <ul className="list-disc pl-5 mt-0 mb-4" {...props} />,
   ol: (props) => <ol className="list-decimal pl-5 mt-0 mb-4" {...props} />,
-  li: (props) => <li className="mb-2" {...props} />,
-  code: (props) => (
-    <code className="text-sm p-4 rounded-md border-gray-100" {...props} />
-  ),
+  li: (props) => <li className="text-sm text-gray-800 leading-8" {...props} />,
+  code: Code,
   pre: PreWrapper,
   blockquote: Blockquote,
   img: (props) => (

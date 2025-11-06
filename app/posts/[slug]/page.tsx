@@ -1,7 +1,6 @@
 import Comments from "@/components/Comments";
 import TOC from "@/components/TOC";
 import MDXComponents from "@/components/mdx/MDXComponents";
-import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
 import { getPosts } from "@/lib/post";
 import { Post } from "@/types/post";
@@ -84,43 +83,45 @@ export default async function PostDetailsPage({ params }: any) {
     >
       <div className="w-full md:w-4/5 px-6">
         <article id={`article`}>
-          <h1>{metadata.title}</h1>
+          <div className="flex gap-2 align-bottom mt-4 mb-8">
+            <h1 className="my-0">{metadata.title}</h1>
+            <span className="text-sm text-blue-500 border rounded-sm p-1 border-blue-500 h-fit leading-none">
+              {post.type}
+            </span>
+          </div>
           <MDXRemote
             source={content}
             components={MDXComponents}
             options={options as any}
           />
         </article>
-        <Separator className="my-12 bg-gray-600" />
-        <div className="flex justify-between">
-          <div>发布时间：{dayjs(metadata.date).format("YYYY-MM-DD")}</div>
-          <div className="flex gap-2 flex-col sm:flex-row">
-            {prevPost ? (
-              <Link href={prevPost.metadata.slug} className="link-underline">
-                上一篇
-              </Link>
-            ) : (
-              <></>
-            )}
-            {nextPost ? (
-              <Link href={nextPost.metadata.slug} className="link-underline">
-                下一篇
-              </Link>
-            ) : (
-              <></>
-            )}
-            <Link href="/" className="link-underline">
-              去首页
-            </Link>
+        <div className="my-12 border-dashed border-gray-300 border-t" />
+        <div className="w-full flex gap-4 flex-col sm:flex-row mb-6">
+          {prevPost ? (
             <Link
-              href="https://twitter.com/weijunext/"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="link-underline"
+              href={prevPost.metadata.slug}
+              className="link-none w-1/2 rounded-md p-4 border border-gray-100 hover:border-blue-500 flex flex-col justify-space-between gap-6 hover:text-blue-500 bg-white"
             >
-              Twitter/X
+              <span className="text-sm">上一篇</span>
+              <span className="text-sm">{prevPost.title}</span>
             </Link>
-          </div>
+          ) : (
+            <></>
+          )}
+          {nextPost ? (
+            <Link
+              href={nextPost.metadata.slug}
+              className="link-none w-1/2 text-gray-500 rounded-md p-4 border border-gray-100 hover:border-blue-500 flex flex-col justify-space-between gap-6 hover:text-blue-500 bg-white"
+            >
+              <span className="text-sm">下一篇</span>
+              <span className="text-sm">{nextPost.title}</span>
+            </Link>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className="text-sm text-gray-500">
+          发布时间：{dayjs(metadata.date).format("YYYY-MM-DD")}
         </div>
         <Comments />
       </div>

@@ -4,11 +4,11 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 
-export async function getPosts(): Promise<{
+export async function getPosts(tag: string[] = ["posts"]): Promise<{
   posts: Post[];
   postsByMonth: PostsByMonth;
 }> {
-  const postsDirectory = path.join(process.cwd(), ...["content", "posts"]);
+  const postsDirectory = path.join(process.cwd(), ...["content", ...tag]);
   let filenames = await fs.promises.readdir(postsDirectory);
   filenames = filenames.reverse();
 

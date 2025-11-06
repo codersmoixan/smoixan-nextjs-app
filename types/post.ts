@@ -7,6 +7,7 @@ export type Post = {
   tag?: string[];
   date?: string;
   description?: string;
+  type?: string;
   metadata: {
     [key: string]: any;
   };

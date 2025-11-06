@@ -1,0 +1,14 @@
+.root {
+  &:global([data-language="javascript"]) {
+    padding: 6px 8px !important;
+    background-color: #F6F8FA !important;
+
+    & :global([data-line] > span) {
+      color: #D73A49 !important;
+    }
+  }
+
+  & :global([data-line]) {
+    line-height: 28px;
+  }
+}
