@@ -7,7 +7,7 @@ export default function Code({ children, ...props }: { children: ReactNode }) {
     <code
       className={cn(
         classes.root,
-        "text-xs p-4 rounded-md border-gray-100 overflow-auto"
+        "text-xs p-4 rounded-xl border-gray-100 overflow-auto"
       )}
       {...props}
     >

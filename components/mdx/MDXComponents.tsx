@@ -3,7 +3,7 @@ import Blockquote from "@/components/mdx/components/Blockquote";
 import { Callout } from "@/components/mdx/components/Callout";
 import Code from "@/components/mdx/components/Code";
 import { MdxCard } from "@/components/mdx/components/MdxCard";
-import PreWrapper from "@/components/mdx/components/PreWrapper";
+import Pre from "@/components/mdx/components/Pre";
 import React, { type JSX, type ReactNode } from "react";
 
 interface HeadingProps {
@@ -74,7 +74,7 @@ const MDXComponents: MDXComponentsProps = {
   ol: (props) => <ol className="list-decimal pl-5 mt-0 mb-4" {...props} />,
   li: (props) => <li className="text-sm text-gray-800 leading-8" {...props} />,
   code: Code,
-  pre: PreWrapper,
+  pre: Pre,
   blockquote: Blockquote,
   img: (props) => (
     <img width="70%" className="rounded border-4 border-main" {...props} />

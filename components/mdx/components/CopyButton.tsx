@@ -6,7 +6,7 @@ import { clsx } from "clsx";
 import { useState } from "react";
 
 interface CopyButtonProps {
-  content: string;
+  content: () => string;
 }
 
 export const CopyButton = (props: CopyButtonProps) => {
@@ -14,7 +14,7 @@ export const CopyButton = (props: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleClick = async () => {
-    await navigator.clipboard.writeText(content);
+    await navigator.clipboard.writeText(content());
     setCopied(true);
     setTimeout(() => setCopied(false), 1000);
   };
@@ -24,7 +24,7 @@ export const CopyButton = (props: CopyButtonProps) => {
   return (
     <button
       className={clsx(
-        "copy-button absolute right-1 top-6 hidden -translate-y-1/2 rounded p-2 hover:bg-gray-100 group-hover:block dark:hover:bg-gray-700 md:-right-4",
+        "rounded p-2 hover:bg-gray-100 group-hover:block dark:hover:bg-gray-700",
         copied
           ? "!block bg-gray-100 text-green-500 dark:bg-gray-700"
           : "text-gray-500"
@@ -36,7 +36,7 @@ export const CopyButton = (props: CopyButtonProps) => {
           Copied!
         </span>
       )}
-      <Icon />
+      <Icon width={16} height={16} />
     </button>
   );
 };

@@ -439,6 +439,12 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 docker build -t nextjs-app .
 ```
 
+> 在构建 Docker 镜像时，默认构建的是当前平台的镜像。如果需要构建特定平台的镜像，可以通过以下命令指定目标平台：
+>
+> ```bash
+> docker build --platform linux/amd64 -t nextjs-app .
+> ```
+
 #### 导出镜像
 
 构建完成后，执行以下命令将镜像导出至本地：

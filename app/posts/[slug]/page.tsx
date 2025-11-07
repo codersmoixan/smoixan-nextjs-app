@@ -1,9 +1,18 @@
 import Comments from "@/components/Comments";
-import TOC from "@/components/TOC";
 import MDXComponents from "@/components/mdx/MDXComponents";
+import TOC from "@/components/TOC";
 import { siteConfig } from "@/config/site";
 import { getPosts } from "@/lib/post";
 import { Post } from "@/types/post";
+import {
+  transformerMetaHighlight,
+  transformerMetaWordHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight,
+} from "@shikijs/transformers";
 import dayjs from "dayjs";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
@@ -29,9 +38,18 @@ const options = {
           keepBackground: false,
           defaultLang: {
             block: "typescript",
-            inline: "javascript",
+            inline: "tag",
           },
           theme: "github-light",
+          transformer: [
+            transformerNotationDiff(),
+            transformerNotationHighlight(),
+            transformerNotationWordHighlight(),
+            transformerNotationFocus(),
+            transformerNotationErrorLevel(),
+            transformerMetaHighlight(),
+            transformerMetaWordHighlight(),
+          ],
         },
       ],
     ],
@@ -100,7 +118,7 @@ export default async function PostDetailsPage({ params }: any) {
           {prevPost ? (
             <Link
               href={prevPost.metadata.slug}
-              className="link-none w-1/2 rounded-md p-4 border border-gray-100 hover:border-blue-500 flex flex-col justify-space-between gap-6 hover:text-blue-500 bg-white"
+              className="link-none w-1/2 text-gray-500 rounded-xl p-4 border border-gray-100 hover:border-blue-500 flex flex-col justify-space-between gap-6 hover:text-blue-500 bg-white"
             >
               <span className="text-sm">上一篇</span>
               <span className="text-sm">{prevPost.title}</span>
@@ -111,7 +129,7 @@ export default async function PostDetailsPage({ params }: any) {
           {nextPost ? (
             <Link
               href={nextPost.metadata.slug}
-              className="link-none w-1/2 text-gray-500 rounded-md p-4 border border-gray-100 hover:border-blue-500 flex flex-col justify-space-between gap-6 hover:text-blue-500 bg-white"
+              className="link-none w-1/2 text-gray-500 rounded-xl p-4 border border-gray-100 hover:border-blue-500 flex flex-col justify-space-between gap-6 hover:text-blue-500 bg-white"
             >
               <span className="text-sm">下一篇</span>
               <span className="text-sm">{nextPost.title}</span>
